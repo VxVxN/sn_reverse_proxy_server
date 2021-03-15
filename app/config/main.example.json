@@ -1,0 +1,10 @@
+{
+    "WEB_SERVER_HOSTNAME": "localhost",
+    "WEB_SERVER_PORT": 8080,
+
+    "AJAX_SERVER_HOSTNAME": "localhost",
+    "AJAX_SERVER_PORT": 8081,
+
+    "REVERSE_PROXY_HOSTNAME": "localhost",
+    "REVERSE_PROXY_SERVER": 8082,
+}
