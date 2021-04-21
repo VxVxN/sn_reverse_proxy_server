@@ -15,13 +15,12 @@ import (
 
 var protocol = "http://"
 
-
 func init() {
 	var err error
-	if err = log.Init("logs/reverse_proxy_server.log", log.CommonLog, false); err != nil {
+	if err = log.Init("app/logs/reverse_proxy_server.log", log.CommonLog, false); err != nil {
 		slog.Printf("Failed to init log: %v", err)
 	}
-	if err = config.InitConfig(); err != nil {
+	if err = config.InitConfig("app/config/main.json"); err != nil {
 		log.Fatal.Printf("Failed to init config: %v", err)
 	}
 }

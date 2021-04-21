@@ -1,0 +1,3 @@
+# github.com/VxVxN/log v0.0.0-20210403163628-7b6e0d0cebfa
+## explicit
+github.com/VxVxN/log

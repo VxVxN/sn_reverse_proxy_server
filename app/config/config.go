@@ -22,8 +22,8 @@ type config struct {
 
 var Cfg *config
 
-func InitConfig() error {
-	jsonFile, err := os.Open( "config/main.json")
+func InitConfig(path string) error {
+	jsonFile, err := os.Open(path)
 	if err != nil {
 		return fmt.Errorf("can't open config: %v", err)
 	}
