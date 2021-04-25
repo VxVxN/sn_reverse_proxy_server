@@ -1,23 +1,27 @@
 package config
 
 import (
-	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
 
+	"gopkg.in/yaml.v2"
+
 	"reverse_proxy_server/app/tools"
 )
 
+type service struct {
+	Name    string `yaml:"name"`
+	Address string `yaml:"address"`
+	Path    string `yaml:"path"`
+}
+
 type config struct {
-	WebServerHostname string `json:"WEB_SERVER_HOSTNAME"`
-	WebServerPort     int    `json:"WEB_SERVER_PORT"`
+	Address string `yaml:"address"`
 
-	AJAXServerHostname string `json:"AJAX_SERVER_HOSTNAME"`
-	AJAXServerPort     int    `json:"AJAX_SERVER_PORT"`
+	Services []service `yaml:"services"`
 
-	ReverseProxyServerHostname string `json:"REVERSE_PROXY_HOSTNAME"`
-	ReverseProxyServerPort     int    `json:"REVERSE_PROXY_SERVER"`
+	IsTrace bool `yaml:"trace"`
 }
 
 var Cfg *config
@@ -35,9 +39,8 @@ func InitConfig(path string) error {
 	}
 
 	Cfg = &config{}
-	if err = json.Unmarshal(byteValue, Cfg); err != nil {
+	if err = yaml.Unmarshal(byteValue, Cfg); err != nil {
 		return fmt.Errorf("can't unmarshal config: %v", err)
 	}
 	return nil
 }
-

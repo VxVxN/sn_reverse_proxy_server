@@ -1,0 +1,9 @@
+address: "0.0.0.0:80"
+services:
+  - name: "ajax_server"
+    address: "0.0.0.0:8081"
+    path: "/ajax/"
+  - name: "web_server"
+    address: "0.0.0.0:8082"
+    path: "/"
+trace: false

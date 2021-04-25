@@ -7,11 +7,11 @@ import (
 	"os"
 )
 
-type levelLog int
+type LevelLog int
 
 const (
 	// CommonLog mode. Normal logging mode. uses info, warning, error, fatal logs.
-	CommonLog levelLog = iota
+	CommonLog LevelLog = iota
 	// DebugLog mode. Usually only enabled when debugging. Very verbose logging.
 	DebugLog
 	// TraceLog mode. Designates finer-grained informational events than the Debug.
@@ -34,7 +34,7 @@ var (
 )
 
 // Init Initializes the logs. Creates a log file with the specified logging level.
-func Init(pathLog string, lvlLog levelLog, isTest bool) error {
+func Init(pathLog string, lvlLog LevelLog, isTest bool) error {
 	var err error
 	var file *os.File
 
