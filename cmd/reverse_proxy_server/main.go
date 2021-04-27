@@ -20,7 +20,7 @@ func init() {
 	if err = config.InitConfig("configs/reverse_proxy_server.yml"); err != nil {
 		slog.Fatalf("Failed to init config: %v", err)
 	}
-	if err = log.Init("logs/reverse_proxy_server.log", getLevelLog(config.Cfg.IsTrace), false); err != nil {
+	if err = log.Init("logs/reverse_proxy_server.log", getLevelLog(config.Cfg.LevelLog), false); err != nil {
 		slog.Fatalf("Failed to init log: %v", err)
 	}
 }
@@ -74,8 +74,11 @@ func serveReverseProxy(target string, res http.ResponseWriter, req *http.Request
 	return nil
 }
 
-func getLevelLog(isTrace bool) log.LevelLog {
-	if isTrace {
+func getLevelLog(lvlLog config.LVLLog) log.LevelLog {
+	switch lvlLog {
+	case config.DebugLog:
+		return log.DebugLog
+	case config.TraceLog:
 		return log.TraceLog
 	}
 	return log.CommonLog

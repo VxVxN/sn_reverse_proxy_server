@@ -21,8 +21,16 @@ type config struct {
 
 	Services []service `yaml:"services"`
 
-	IsTrace bool `yaml:"trace"`
+	LevelLog LVLLog `yaml:"level_log"`
 }
+
+type LVLLog string
+
+const (
+	CommonLog LVLLog = "common"
+	DebugLog         = "debug"
+	TraceLog         = "trace"
+)
 
 var Cfg *config
 
