@@ -7,7 +7,7 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"reverse_proxy_server/app/tools"
+	"reverse_proxy_server/pkg/tools"
 )
 
 type service struct {

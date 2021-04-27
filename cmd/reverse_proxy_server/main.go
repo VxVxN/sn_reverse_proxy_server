@@ -10,17 +10,17 @@ import (
 
 	"github.com/VxVxN/log"
 
-	"reverse_proxy_server/app/config"
+	"reverse_proxy_server/pkg/config"
 )
 
 var protocol = "http://"
 
 func init() {
 	var err error
-	if err = config.InitConfig("app/config/main.yml"); err != nil {
+	if err = config.InitConfig("configs/reverse_proxy_server.yml"); err != nil {
 		slog.Fatalf("Failed to init config: %v", err)
 	}
-	if err = log.Init("app/logs/reverse_proxy_server.log", getLevelLog(config.Cfg.IsTrace), false); err != nil {
+	if err = log.Init("logs/reverse_proxy_server.log", getLevelLog(config.Cfg.IsTrace), false); err != nil {
 		slog.Fatalf("Failed to init log: %v", err)
 	}
 }
