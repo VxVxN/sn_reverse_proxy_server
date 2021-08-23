@@ -1,4 +1,9 @@
 address: "0.0.0.0:80"
+
+is_ssl: false
+cert_key: ""
+cert_file: ""
+
 services:
   - name: "ajax_server"
     address: "0.0.0.0:8081"

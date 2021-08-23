@@ -31,8 +31,15 @@ func main() {
 
 	http.HandleFunc("/", handleRequestAndRedirect)
 
-	if err := http.ListenAndServe(addr, nil); err != nil {
-		log.Fatal.Printf("Failed to listen and serve: %v, address: %s", err, addr)
+	if config.Cfg.IsSSL {
+		if err := http.ListenAndServeTLS(addr, config.Cfg.CertFile, config.Cfg.CertKey, nil); err != nil {
+			log.Fatal.Printf("Failed to listen and serve: %v, address: %s", err, addr)
+		}
+
+	} else {
+		if err := http.ListenAndServe(addr, nil); err != nil {
+			log.Fatal.Printf("Failed to listen and serve: %v, address: %s", err, addr)
+		}
 	}
 }
 

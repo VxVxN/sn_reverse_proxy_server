@@ -16,8 +16,15 @@ type service struct {
 	Path    string `yaml:"path"`
 }
 
+type ssl struct {
+	IsSSL    bool   `yaml:"is_ssl"`
+	CertKey  string `yaml:"cert_key"`
+	CertFile string `yaml:"cert_file"`
+}
+
 type config struct {
 	Address string `yaml:"address"`
+	ssl
 
 	Services []service `yaml:"services"`
 
